@@ -5,6 +5,11 @@ const navWrapper = document.getElementById('navWrapper');
 hamburger.addEventListener('click', () => {
   navWrapper.classList.toggle('open');
   hamburger.classList.toggle('active');
+  
+  // Reset dropdowns when closing the menu
+  if (!navWrapper.classList.contains('open')) {
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+  }
 });
 
 // Close nav on link click (mobile)
@@ -12,7 +17,18 @@ document.querySelectorAll('.main-nav a').forEach(link => {
   link.addEventListener('click', () => {
     navWrapper.classList.remove('open');
     hamburger.classList.remove('active');
+    // Reset dropdowns
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
   });
+});
+
+// Close nav when clicking outside
+window.addEventListener('click', (e) => {
+  if (navWrapper.classList.contains('open') && !navWrapper.contains(e.target) && !hamburger.contains(e.target)) {
+    navWrapper.classList.remove('open');
+    hamburger.classList.remove('active');
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+  }
 });
 
 // Mobile dropdowns

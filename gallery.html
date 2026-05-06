@@ -210,6 +210,30 @@
       track.style.transform = `translateX(${slideIndex * 100}%)`;
     }
   });
+
+  // Touch Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  }, { passive: true });
+
+  function handleGesture() {
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 50) { // Threshold for swipe
+      if (diff > 0) {
+        moveSlide(-1); // Swipe Right (Previous)
+      } else {
+        moveSlide(1); // Swipe Left (Next)
+      }
+    }
+  }
 </script>
 </div>
 </div>
