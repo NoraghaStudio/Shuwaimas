@@ -140,16 +140,54 @@ print("policies.html updated to match index.html styling.")
 
 # Do the same for gallery.html if possible
 images_dir = "images"
-image_files = [f for f in glob.glob(os.path.join(images_dir, "*")) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp'))]
-video_files = [f for f in glob.glob(os.path.join(images_dir, "*")) if f.lower().endswith(('.mp4', '.mov'))]
+def is_valid_gallery_file(f):
+    name = os.path.splitext(os.path.basename(f))[0]
+    return bool(re.match(r'^[A-Za-z]\d*$', name))
+
+image_files = [f for f in glob.glob(os.path.join(images_dir, "*")) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')) and is_valid_gallery_file(f)]
+video_files = [f for f in glob.glob(os.path.join(images_dir, "*")) if f.lower().endswith(('.mp4', '.mov')) and is_valid_gallery_file(f)]
 
 gallery_html = header_part + """
   <style>
-    .gallery-container { padding: 80px 0; background-color: var(--light); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding: 20px 0; }
-    .gallery-item { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); background: var(--white); padding: 10px; }
-    .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-    .gallery-item img, .gallery-item video { width: 100%; height: 200px; object-fit: cover; display: block; border-radius: 8px; }
+    .gallery-container { padding: 150px 0 80px; background-color: var(--light); }
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+    }
+    .carousel-slide img, .carousel-slide video {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+      background: #000;
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-btn:hover { background: #fff; }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
   </style>
 
   <div class="gallery-container">
@@ -159,29 +197,72 @@ gallery_html = header_part + """
           <p>جانب من أعمال وأنشطة جمعية التنمية الأهلية بالشويمس</p>
           <div class="line"></div>
         </div>
-        <div class="gallery-grid">
+        
+        <div class="carousel-container fade-in">
+          <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-track" id="carouselTrack">
 """
 
-for img in image_files:
-    url_img = urllib.parse.quote(img)
-    gallery_html += f"""
-          <div class="gallery-item fade-in">
-            <img src="{url_img}" alt="معرض الصور" loading="lazy">
-          </div>
-    """
+all_files = image_files + video_files
+for f in all_files:
+    url_f = urllib.parse.quote(f)
+    if f.lower().endswith(('.mp4', '.mov')):
+        gallery_html += f'            <div class="carousel-slide"><video src="{url_f}" controls preload="metadata"></video></div>\n'
+    else:
+        gallery_html += f'            <div class="carousel-slide"><img src="{url_f}" alt="معرض الصور"></div>\n'
 
-for vid in video_files:
-    url_vid = urllib.parse.quote(vid)
-    gallery_html += f"""
-          <div class="gallery-item fade-in">
-            <video src="{url_vid}" controls preload="metadata"></video>
-          </div>
-    """
-
-gallery_html += """
+gallery_html += """          </div>
         </div>
     </div>
   </div>
+
+<script>
+  const track = document.getElementById('carouselTrack');
+  if (track && track.children.length > 0) {
+      const slides = Array.from(track.children);
+      const firstClone = slides[0].cloneNode(true);
+      const lastClone = slides[slides.length - 1].cloneNode(true);
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, slides[0]);
+      const allSlides = Array.from(track.children);
+      let slideIndex = 1;
+      let isTransitioning = false;
+      track.style.transform = `translateX(${slideIndex * 100}%)`;
+
+      window.moveSlide = function(n) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        slideIndex += n;
+        track.style.transition = "transform 0.5s ease";
+        track.style.transform = `translateX(${slideIndex * 100}%)`;
+      }
+
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (allSlides[slideIndex] === firstClone) {
+          track.style.transition = "none";
+          slideIndex = 1;
+          track.style.transform = `translateX(${slideIndex * 100}%)`;
+        }
+        if (allSlides[slideIndex] === lastClone) {
+          track.style.transition = "none";
+          slideIndex = allSlides.length - 2;
+          track.style.transform = `translateX(${slideIndex * 100}%)`;
+        }
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+      track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+      track.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }, {passive: true});
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) moveSlide(-1);
+        if (touchEndX > touchStartX + swipeThreshold) moveSlide(1);
+      }
+  }
+</script>
 """ + footer_part
 
 gallery_html = gallery_html.replace("<title>الرئيسية - جمعية التنمية الأهلية بالشويمس</title>", "<title>معرض الصور والمرئيات - جمعية التنمية الأهلية بالشويمس</title>")
