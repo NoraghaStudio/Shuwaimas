@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض الصور والمرئيات - جمعية التنمية الأهلية بالشويمس</title>
+  <meta name="description"
+    content="جمعية التنمية الأهلية بالشويمس - نعمل على تنمية المجتمع المحلي وتقديم الخدمات الاجتماعية والتنموية لأبناء محافظة الشويمس">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+</head>
+
+<body>
+
+
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.jpeg" alt="شعار الجمعية"
+          style="width: 50px; height: 50px; object-fit: contain; border-radius: 5px; margin-left: 10px;">
+        <div class="logo-text">
+          <h1>جمعية التنمية الأهلية بالشويمس</h1>
+        </div>
+      </a>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav class="nav-wrapper" id="navWrapper">
+        <ul class="main-nav">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li class="dropdown">
+            <a href="index.html#about">عن الجمعية <i class="fas fa-chevron-down" style="font-size:10px"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html#about">النشأة والتأسيس</a></li>
+              <li><a href="index.html#about">الرؤية</a></li>
+              <li><a href="index.html#about">الرسالة</a></li>
+              <li><a href="index.html#about">الأهداف الاستراتيجية</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">الحوكمة <i class="fas fa-chevron-down" style="font-size:10px"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="board.html">مجلس الإدارة</a></li>
+              <li><a href="policies.html">السياسات واللوائح</a></li>
+              <li><a href="index.html#programs">المشاريع والبرامج</a></li>
+            </ul>
+          </li>
+
+          <li><a href="gallery.html" class="active">المعرض</a></li>
+          <li><a href="index.html#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <style>
+    .gallery-container { padding: 150px 0 80px; background-color: var(--light); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding: 20px 0; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); background: var(--white); padding: 10px; }
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .gallery-item img, .gallery-item video { width: 100%; height: 200px; object-fit: cover; display: block; border-radius: 8px; }
+  </style>
+
+  <div class="gallery-container">
+    <div class="container">
+        <div class="section-header fade-in">
+          <h2>معرض الصور والمرئيات</h2>
+          <p>جانب من أعمال وأنشطة جمعية التنمية الأهلية بالشويمس</p>
+          <div class="line"></div>
+        </div>
+        
+<style>
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-slide {
+  min-width: 100%;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  background: #000;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+.carousel-btn:hover { background: #fff; }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+</style>
+
+<div class="carousel-container fade-in">
+  <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="carousel-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-slide"><img src="images/A10.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A11.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A12.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A2.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A3.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A4.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A5.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A6.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A7.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A8.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/A9.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B1.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B2.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B3.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B4.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B5.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B6.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/B7.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C1.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C2.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C3.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C4.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C5.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C6.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/C7.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D1.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D10.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D11.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D12.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D13.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D14.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D15.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D2.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D3.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D4.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D5.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D6.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D7.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D8.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/D9.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/Hero.jpg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/WhatsApp Image 2026-05-05 at 5.01.56 PM (3).jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/دورات1.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/دورات2.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/دورات3.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/شهادة تسجيل جمعية.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/مجلس الإدارة.jpeg" alt="معرض الصور"></div>
+    <div class="carousel-slide"><img src="images/من نحن.jpeg" alt="معرض الصور"></div>
+  </div>
+</div>
+
+<script>
+  const track = document.getElementById('carouselTrack');
+  const slides = Array.from(track.children);
+  
+  // Clone first and last slides for infinite effect
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+  
+  const allSlides = Array.from(track.children);
+  let slideIndex = 1; // Start at the first original slide
+  let isTransitioning = false;
+
+  // Initial position
+  track.style.transform = `translateX(${slideIndex * 100}%)`;
+
+  function moveSlide(n) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    slideIndex += n;
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(${slideIndex * 100}%)`;
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    if (allSlides[slideIndex] === firstClone) {
+      track.style.transition = "none";
+      slideIndex = 1;
+      track.style.transform = `translateX(${slideIndex * 100}%)`;
+    }
+    if (allSlides[slideIndex] === lastClone) {
+      track.style.transition = "none";
+      slideIndex = allSlides.length - 2;
+      track.style.transform = `translateX(${slideIndex * 100}%)`;
+    }
+  });
+</script>
+</div>
+</div>
+  </div>
+<!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>جمعية التنمية الأهلية بالشويمس</h3>
+          <p>جمعية أهلية تنموية تسعى لتحقيق التنمية المستدامة وتمكين الأفراد والأسر في محافظة الشويمس من خلال برامج
+            اجتماعية وتعليمية وتدريبية متنوعة.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+
+            <li><a href="index.html#news">الأخبار</a></li>
+            <li><a href="#">التقارير</a></li>
+            <li><a href="policies.html">السياسات واللوائح</a></li>
+            <li><a href="gallery.html">معرض الصور</a></li>
+            <li><a href="#">طلب عضوية</a></li>
+            <li><a href="#" onclick="showCert(event)">شهادة التسجيل</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>تواصل معنا</h4>
+          <div class="footer-contact-item"><i class="fas fa-phone"></i> 0500406404 | 0505164912</div>
+          <div class="footer-contact-item"><i class="fas fa-envelope"></i> Shwimes.mcs@hotmail.com</div>
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> الشويمس - حائل</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        جميع الحقوق محفوظة © ٢٠٢٦ جمعية التنمية الأهلية بالشويمس | رقم الترخيص: ٤٤١٣ (مسجلة بالمركز الوطني لتنمية القطاع غير الربحي)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Registration Certificate Modal -->
+  <div id="certModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:90%; max-height:90%;">
+      <span onclick="document.getElementById('certModal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; font-size:30px; cursor:pointer;">&times;</span>
+      <img src="images/شهادة تسجيل جمعية.jpeg" style="max-width:100%; max-height:90vh; border-radius:8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

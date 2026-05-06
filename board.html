@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مجلس الإدارة - جمعية التنمية الأهلية بالشويمس</title>
+  <meta name="description"
+    content="جمعية التنمية الأهلية بالشويمس - نعمل على تنمية المجتمع المحلي وتقديم الخدمات الاجتماعية والتنموية لأبناء محافظة الشويمس">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+</head>
+
+<body>
+
+
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.jpeg" alt="شعار الجمعية"
+          style="width: 50px; height: 50px; object-fit: contain; border-radius: 5px; margin-left: 10px;">
+        <div class="logo-text">
+          <h1>جمعية التنمية الأهلية بالشويمس</h1>
+        </div>
+      </a>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav class="nav-wrapper" id="navWrapper">
+        <ul class="main-nav">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li class="dropdown">
+            <a href="index.html#about">عن الجمعية <i class="fas fa-chevron-down" style="font-size:10px"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html#about">النشأة والتأسيس</a></li>
+              <li><a href="index.html#about">الرؤية</a></li>
+              <li><a href="index.html#about">الرسالة</a></li>
+              <li><a href="index.html#about">الأهداف الاستراتيجية</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">الحوكمة <i class="fas fa-chevron-down" style="font-size:10px"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="board.html" class="active">مجلس الإدارة</a></li>
+              <li><a href="policies.html">السياسات واللوائح</a></li>
+              <li><a href="index.html#programs">المشاريع والبرامج</a></li>
+            </ul>
+          </li>
+
+          <li><a href="gallery.html">المعرض</a></li>
+          <li><a href="index.html#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Board Section -->
+  <section class="section" id="board" style="padding-top:120px; min-height:60vh;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>مجلس الإدارة</h2>
+        <p>أعضاء مجلس الإدارة لجمعية التنمية الأهلية بالشويمس</p>
+        <div class="line"></div>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; gap: 20px;">
+        <div style="text-align: center; background: var(--white); padding: 20px; border-radius: 50%; width: 150px; height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: var(--shadow-lg); border: 5px solid var(--primary-light);">
+          <span style="font-size: 32px; font-weight: 700; color: var(--primary); line-height: 1;">٤</span>
+          <span style="font-size: 14px; color: var(--gray); font-weight: 600;">سنوات</span>
+          <div style="font-size: 11px; color: var(--primary-dark); margin-top: 5px;">مدة الدورة</div>
+        </div>
+        <button onclick="showBoardFile(event)" class="btn btn-primary" style="padding: 10px 25px; border-radius: 8px;">
+          <i class="fas fa-file-image"></i> عرض الملف المرفق
+        </button>
+      </div>
+
+  <!-- Board File Modal -->
+  <div id="boardFileModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:90%; max-height:90%;">
+      <span onclick="document.getElementById('boardFileModal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; font-size:30px; cursor:pointer;">&times;</span>
+      <img src="images/مجلس الإدارة.jpeg" style="max-width:100%; max-height:90vh; border-radius:8px;">
+    </div>
+  </div>
+
+  <script>
+    function showBoardFile(e) {
+      e.preventDefault();
+      document.getElementById('boardFileModal').style.display = 'flex';
+    }
+  </script>
+      <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div class="stat-card fade-in">
+          <i class="fas fa-user-tie"></i>
+          <h3 style="margin-top:15px; color:var(--primary-dark)">ممدوح بن براهيم غثي الرشيدي</h3>
+          <span class="label">رئيس المجلس</span>
+        </div>
+        <div class="stat-card fade-in">
+          <i class="fas fa-user-tie"></i>
+          <h3 style="margin-top:15px; color:var(--primary-dark)">محمد بن براهيم غثي الرشيدي</h3>
+          <span class="label">نائب رئيس</span>
+        </div>
+        <div class="stat-card fade-in">
+          <i class="fas fa-user-tie"></i>
+          <h3 style="margin-top:15px; color:var(--primary-dark)">احمد بن عبدالله مسلم الرشيدي</h3>
+          <span class="label">المشرف المالي</span>
+        </div>
+        <div class="stat-card fade-in">
+          <i class="fas fa-user"></i>
+          <h3 style="margin-top:15px; color:var(--primary-dark)">مندوب بن حباس براهيم الرشيدي</h3>
+          <span class="label">عضو</span>
+        </div>
+        <div class="stat-card fade-in">
+          <i class="fas fa-user"></i>
+          <h3 style="margin-top:15px; color:var(--primary-dark)">نايل بن عقيل خلف الرشيدي</h3>
+          <span class="label">عضو</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>جمعية التنمية الأهلية بالشويمس</h3>
+          <p>جمعية أهلية تنموية تسعى لتحقيق التنمية المستدامة وتمكين الأفراد والأسر في محافظة الشويمس من خلال برامج
+            اجتماعية وتعليمية وتدريبية متنوعة.</p>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+
+            <li><a href="#news">الأخبار</a></li>
+            <li><a href="#">التقارير</a></li>
+            <li><a href="policies.html">السياسات واللوائح</a></li>
+            <li><a href="gallery.html">معرض الصور</a></li>
+            <li><a href="#">طلب عضوية</a></li>
+            <li><a href="#" onclick="showCert(event)">شهادة التسجيل</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>تواصل معنا</h4>
+          <div class="footer-contact-item"><i class="fas fa-phone"></i> 0500406404 | 0505164912</div>
+          <div class="footer-contact-item"><i class="fas fa-envelope"></i> Shwimes.mcs@hotmail.com</div>
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> الشويمس - حائل</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        جميع الحقوق محفوظة © ٢٠٢٦ جمعية التنمية الأهلية بالشويمس | رقم الترخيص: ٤٤١٣ (مسجلة بالمركز الوطني لتنمية القطاع غير الربحي)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Registration Certificate Modal -->
+  <div id="certModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+    <div style="position:relative; max-width:90%; max-height:90%;">
+      <span onclick="document.getElementById('certModal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; font-size:30px; cursor:pointer;">&times;</span>
+      <img src="images/شهادة تسجيل جمعية.jpeg" style="max-width:100%; max-height:90vh; border-radius:8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
