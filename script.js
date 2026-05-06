@@ -19,6 +19,36 @@ document.querySelectorAll('.main-nav a:not(.dropdown > a)').forEach(link => {
   });
 });
 
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+  if (navWrapper.classList.contains('open') && !navWrapper.contains(e.target) && !hamburger.contains(e.target)) {
+    navWrapper.classList.remove('open');
+    hamburger.classList.remove('active');
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+});
+
+// Swipe left to close mobile nav
+let navTouchStartX = 0;
+let navTouchEndX = 0;
+document.addEventListener('touchstart', e => {
+  if(navWrapper.classList.contains('open')){
+    navTouchStartX = e.changedTouches[0].screenX;
+  }
+}, {passive: true});
+
+document.addEventListener('touchend', e => {
+  if(navWrapper.classList.contains('open')){
+    navTouchEndX = e.changedTouches[0].screenX;
+    if (navTouchEndX < navTouchStartX - 50) { // swipe left
+      navWrapper.classList.remove('open');
+      hamburger.classList.remove('active');
+      document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  }
+}, {passive: true});
+
+
 // Mobile dropdowns
 document.querySelectorAll('.dropdown > a').forEach(toggle => {
   toggle.addEventListener('click', (e) => {
