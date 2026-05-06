@@ -34,19 +34,23 @@ const header = document.querySelector('.header');
 const scrollTopBtn = document.getElementById('scrollTop');
 const hasHero = document.querySelector('.hero') !== null;
 
-// Initial state for pages without hero
-if (!hasHero) {
+// Initial state for pages
+if (hasHero) {
+  header.classList.add('hero-header');
+}
+
+if (window.scrollY > 50) {
   header.classList.add('scrolled');
+} else {
+  header.classList.remove('scrolled');
 }
 
 window.addEventListener('scroll', () => {
   // Toggle scrolled class for header
-  if (hasHero) {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
   }
 
   // Scroll to top button visibility
