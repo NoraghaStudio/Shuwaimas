@@ -69,12 +69,32 @@
       </div>
       
       <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; gap: 20px;">
-        <div style="text-align: center; background: var(--white); padding: 20px; border-radius: 50%; width: 150px; height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: var(--shadow-lg); border: 5px solid var(--primary-light);">
-          <span style="font-size: 32px; font-weight: 700; color: var(--primary); line-height: 1;">٤</span>
-          <span style="font-size: 14px; color: var(--gray); font-weight: 600;">سنوات</span>
-          <div style="font-size: 11px; color: var(--primary-dark); margin-top: 5px;">مدة الدورة</div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; align-items: center; width: 100%;">
+          
+          <!-- الدورة الأولى -->
+          <div style="text-align: center; background: var(--white); padding: 20px; border-radius: 15px; width: 220px; box-shadow: var(--shadow-lg); border-top: 5px solid var(--primary-light);">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;">الدورة الأولى</h4>
+            <div style="font-size: 14px; color: var(--dark); margin-bottom: 5px;"><strong>البداية:</strong> 11 / 1 / 2022 م</div>
+            <div style="font-size: 14px; color: var(--dark);"><strong>النهاية:</strong> 11 / 1 / 2026 م</div>
+          </div>
+
+          <!-- مدة الدورة -->
+          <div style="text-align: center; background: var(--white); padding: 20px; border-radius: 50%; width: 150px; height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: var(--shadow-lg); border: 5px solid var(--primary-light);">
+            <span style="font-size: 32px; font-weight: 700; color: var(--primary); line-height: 1;">٤</span>
+            <span style="font-size: 14px; color: var(--gray); font-weight: 600;">سنوات</span>
+            <div style="font-size: 11px; color: var(--primary-dark); margin-top: 5px;">مدة الدورة</div>
+          </div>
+
+          <!-- الدورة الثانية -->
+          <div style="text-align: center; background: var(--white); padding: 20px; border-radius: 15px; width: 220px; box-shadow: var(--shadow-lg); border-top: 5px solid var(--primary-light);">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;">الدورة الثانية</h4>
+            <div style="font-size: 14px; color: var(--dark); margin-bottom: 5px;"><strong>البداية:</strong> 11 / 1 / 2026 م</div>
+            <div style="font-size: 14px; color: var(--dark);"><strong>النهاية:</strong> 11 / 1 / 2030 م</div>
+          </div>
+          
         </div>
-        <button onclick="showBoardFile(event)" class="btn btn-primary" style="padding: 10px 25px; border-radius: 8px;">
+        
+        <button onclick="showBoardFile(event)" class="btn btn-primary" style="padding: 10px 25px; border-radius: 8px; margin-top: 15px;">
           <i class="fas fa-file-image"></i> عرض الملف المرفق
         </button>
       </div>
